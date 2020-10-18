@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-publish:
 
     runs-on: ubuntu-latest
 
@@ -16,5 +16,15 @@ jobs:
     - name: Build the site in the jekyll/builder container
       run: |
         docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
+        -v ${{ github.workspace }}:/srv/jekyll \
+        -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest \
+        /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
+    - name: 'Build:dockerimage'
+      uses: docker/build-push-action@v1
+      with:
+        registry: ghcr.io
+        username: "penson122"
+        password: ${{ secrets.PAT }}
+        repository: penson122/personal-blog
+        tags: latest
