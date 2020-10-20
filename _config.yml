@@ -30,16 +30,16 @@ github_username:  Penson122
 theme: minimal-mistakes-jekyll
 plugins:
   - jekyll-feed
-
+  - jemoji
 include:
   - _posts
 
-minimal_mistakes_skin: "dark" 
+minimal_mistakes_skin: "dark"
 
 defaults:
   # _posts
   - scope:
-      path: ""
+      path: "_posts"
       type: posts
     values:
       layout: single
