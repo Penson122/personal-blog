@@ -68,7 +68,7 @@ author:
 exclude:
   - nginx/
   - Dockerfile
-  - .github
+  - .github/
 
 
 # Exclude from processing.
