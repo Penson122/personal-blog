@@ -99,9 +99,9 @@ docker run --detach \
 
 docker run --detach \
       --name blog \
-      --env "VIRTUAL_HOST=blog.jackpenson.dev" \
+      --env "VIRTUAL_HOST=jackpenson.dev" \
       --env "VIRTUAL_PORT=8080" \
-      --env "LETSENCRYPT_HOST=blog.jackpenson.dev" \
+      --env "LETSENCRYPT_HOST=jackpenson.dev" \
       ghcr.io/penson122/personal-blog
 ```
 
