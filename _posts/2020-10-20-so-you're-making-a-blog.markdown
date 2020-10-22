@@ -67,7 +67,7 @@ If you haven't noticed yet, I am a big fan of automation. It allows me to feel l
 
 ### Continuous Integration
 
-I'm sure I don't need to convince anyone why this is necessary, but just in case, [start here](https://martinfowler.com/articles/continuousIntegration.html). This blog is hosted on [github](github.com/penson122/personal-site) and new blog entries will be added via PRs.
+I'm sure I don't need to convince anyone why this is necessary, but just in case, [start here](https://martinfowler.com/articles/continuousIntegration.html). This blog is hosted on [github](https://www.github.com/penson122/personal-blog) and new blog entries will be added via PRs.
 
 I'm currently using GitHub Actions as my CI task runner largely because I've never used it before. It seems like a very lightweight solution, doesn't require additional accounts, and JustWorks:tm: for my needs. I do plan on doing some kind of comparative analysis of the CI platforms with free tiers, some are certainly better than others at certain things.
 
