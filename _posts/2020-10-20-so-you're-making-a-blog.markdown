@@ -2,7 +2,7 @@
 title:  "So You're Making a Blog."
 ---
 
-Let's say you're a some-what recently graduated developer and you find yourself tunnel-visioning on particular technologies at work. If this is the case, in order to not go stale, you're going to need to find an outlet where you can experiment with new technologies, and record your findings and opinions.
+Let's say you're a somewhat recently graduated developer and you find yourself tunnel-visioning on particular technologies at work. If this is the case, in order to not go stale, you're going to need to find an outlet where you can experiment with new technologies, and record your findings and opinions.
 
 In order to experiment with new technologies you're going to need to dedicate time and effort to keeping up with the goings on of modern development. This will give you a perfect excuse to feel like you're not wasting your time and energy on /r/programming and hackernews.
 
