@@ -18,36 +18,58 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Jack Penson Blog
+title:                  Jack Penson Blog
 email:
-description: >- # this means to ignore newlines until "baseurl:"
+description:            >- # this means to ignore newlines until "baseurl:"
   Personal blog of Jack Penson.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "jackpenson.dev" # the base hostname & protocol for your site, e.g. http://example.
-github_username:  Penson122
+baseurl:                "" # the subpath of your site, e.g. /blog
+url:                    "jackpenson.dev" # the base hostname & protocol for your site, e.g. http://example.
+github_username:        Penson122
 
 # Build settings
-theme: minimal-mistakes-jekyll
+theme:                  minimal-mistakes-jekyll
 plugins:
   - jekyll-feed
 
 include:
   - _posts
 
-minimal_mistakes_skin: "dark" 
-
+minimal_mistakes_skin:  "air"
+logo:                   "/assets/images/profile.png"
+masthead_title:         Not Another Dev Blog
 defaults:
   # _posts
   - scope:
-      path: ""
-      type: posts
+      path:             "_posts"
+      type:             posts
     values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: # true
-      share: true
-      related: true
+      layout:           single
+      author_profile:   true
+      read_time:        true
+      comments:         # true
+      share:            true
+      related:          true
+
+name:                   &name "Jack Penson"
+author:
+  name:                 *name # *name is a YAML reference pointing to the &anchor earlier
+  avatar:               "/assets/images/jack-penson.jpg"
+  bio: >-
+    Software Engineer mostly working on CI/CD Pipelines using Kubernetes, Chef, and various cloud providers
+  location:             "York, UK"
+  links:
+    - label:            "Email"
+      icon:             "fas fa-fw fa-envelope-square"
+      url:              "mailto:contact@jackpenson.dev"
+    - label:            "Github"
+      icon:             "fas fa-fw fa-code-branch"
+      url:              "https://www.github.com/penson122"
+
+exclude:
+  - nginx/
+  - Dockerfile
+  - .github/
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
