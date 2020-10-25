@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title:                  Jack Penson Blog
+title:                  Not Another Dev Blog
 email:
 description:            >- # this means to ignore newlines until "baseurl:"
-  Personal blog of Jack Penson.
+  Yet another blog about softwre, code, and DevOps.
 baseurl:                "" # the subpath of your site, e.g. /blog
 url:                    "jackpenson.dev" # the base hostname & protocol for your site, e.g. http://example.
 github_username:        Penson122
