@@ -133,7 +133,7 @@ This can be succinctly represented via Johari Windows with a little editing from
 
 This technique is useful to breakdown what work presents the most risk. Those in the top left corner should be the bread and butter work, the bottom right is the risky endeavour. Here the understanding of a particular problem domain or design challenge is what creates the risk.
 
-In technical projects rather than their original purpose of psychological analysis each category takes on a slightly shifted meaning. This interpretation of the Johari Window aligns much closer to that of the [Design Thinking model](https://medium.com/digital-experience-design/the-johari-window-as-a-part-of-the-design-process-4cd79a921f4e).
+In technical projects rather than their original purpose of psychological analysis each category takes on a slightly shifted meaning. This interpretation of the Johari Window aligns much closely to that of the [Design Thinking model](https://medium.com/digital-experience-design/the-johari-window-as-a-part-of-the-design-process-4cd79a921f4e).
 
 ### Known Knowns
 
@@ -145,7 +145,7 @@ In the development of this blog, the usage of static site builders and markdown 
 
 ### Known Unknowns
 
-Not known to those performing the task, but is known by others. Typically this would cover new skills, techniques or the first implementations of some theory. There is a definite prior art but no experience for those performing the task.
+Typically this would cover new skills, techniques or the first implementations of some theory. There is a definite prior art but no experience for those performing the task.
 
 This would be the usage of `docker-gen` and `nginx-proxy`. I had no personal experience deploying a static site in this manner, but it was clear that others had success doing it this way and there was prior art for how to do so.
 
@@ -167,7 +167,7 @@ The truly risky categories of endeavours. Typically it's safer to play in the kn
 
 ### Leveraging unknowns
 
-There are various categories of work which inevitably lead to discovery and exploration and unfortunately the only way to avoid hitting those categories of work is to stay in the "known knowns" quadrant and never innovate or learn. Given this, it's critical to challenge those unknowns directly. They represent the greatest amount of risk to a project and should be best understood before proceeding with any other aspects of it. Or rue the day when you need to re-architecture your entire stack because your assumptions bite you very late in the game.
+There are various categories of work which inevitably lead to discovery and exploration and unfortunately the only way to avoid hitting those categories is to stay in the "known knowns" quadrant and never innovate or learn. Given this, it's critical to challenge those unknowns directly. They represent the greatest amount of risk to a project and should be best understood before proceeding with any other aspect of it. Or rue the day when you need to re-architecture your entire stack because your assumptions bite you very late in the game.
 
 However these challenges always present a high degree of churn, you'll quickly hit walls in your understanding and it's typically best to scrap the work and retry. This is the failing fast model of development. Typically pairs best with some hypothesis based on your outcomes.
 
@@ -187,9 +187,9 @@ This immediately places the known parts of the known unknowns to the forefront o
 
 I'm telling a bit of a lie here, because I already had a good idea that using a single instance with a reverse proxy would be the cheapest and simplest option for starting out. But I did have to research ways of deploying reverse proxies using docker, and the costs of using serverless deployments behind a load balancer. In the end, the solution with the least headache, and the most discovery was to use the `nginx-proxy` container and a single static host. So once I had tested on a hastily constructed droplet that I could use `nginx-proxy` to automatically create subdomains and that they were reachable I was happy with my experimentation phase and quickly put together a pipeline.
 
-The first thing that I did once I had a plan that was actionable was to create a test environment and prove out my assumptions. Luckily they were correct and it was fairly smooth sailing. If it had been the case that for example, `nginx-proxy` was poorly maintained and it didn't work appropriately, or that I had made assumptions about how various parts of the static fit together such as nginx wasn't suitable for hosting jekyll sites then at this point I would have scrapped the stack and gone a different route. Likely I would have looked at using Google Cloud Functions, or AWS Lambdas.
+The first thing that I did once I had a plan that was actionable was to create a test environment and prove out my assumptions. Luckily they were correct and it was fairly smooth sailing. If it had been the case that for example, `nginx-proxy` was poorly maintained and it didn't work appropriately, or that I had made assumptions about how various parts of the stack fit together such as nginx wasn't suitable for hosting jekyll sites then at this point I would have scrapped the stack and gone a different route. Likely I would have looked at using Google Cloud Functions, or AWS Lambdas.
 
-If you look at the [pull request history](https://github.com/Penson122/personal-blog/pulls?q=is%3Apr+is%3Aclosed), you'll see that the first two were to add the demo site that comes with `jekyll init`, and a workflow and dockerfile for deploying this as a static site. This made it trivial test ways of deploying the site. All I had to do was `docker login` and `docker run` and I could deploy this site anywhere without any fuss.
+If you look at the [pull request history](https://github.com/Penson122/personal-blog/pulls?q=is%3Apr+is%3Aclosed), you'll see that the first two were to add the demo site that comes with `jekyll new`, a dockerfile and a workflow to publish the container. This made it trivial test ways of deploying the site. All I had to was pull and run the container on a host with docker installed.
 
 Having this single artefact with which to deploy the site meant that I could quickly innovate and prove out my unknowns, those being using a reverse proxy with multiple subdomains, and using docker to host the targets for those subdomains.
 
@@ -201,6 +201,6 @@ To summarise: when starting new projects first interrogate any gaps in understan
 
 ## Endings are weird
 
-I plan on writing about CI/CD practices, DevOps, maybe even something around art and programming. Particularly I'd like to play around with parsing or constructing conceptual art pieces like those of [Laurence Weiner](https://www.guggenheim.org/artwork/artist/lawrence-weiner). Maybe even some generative art?
+I plan on writing more about CI/CD practices, DevOps, maybe even something around art and programming. Particularly I'd like to play around with parsing or constructing conceptual art pieces like those of [Laurence Weiner](https://www.guggenheim.org/artwork/artist/lawrence-weiner). Maybe even some generative art?
 
 So yeah thanks for reading the first of I hope, at the very least, several posts.
