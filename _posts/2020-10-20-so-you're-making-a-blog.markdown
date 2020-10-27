@@ -167,7 +167,7 @@ The truly risky categories of endeavours. Typically it's safer to play in the kn
 
 ### Leveraging unknowns
 
-There are various categories of work which inevitably lead to discovery and exploration and unfortunately the only way to avoid hitting those categories is to stay in the "known knowns" quadrant and never innovate or learn. Given this, it's critical to challenge those unknowns directly. They represent the greatest amount of risk to a project and should be best understood before proceeding with any other aspect of it. Or rue the day when you need to re-architecture your entire stack because your assumptions bite you very late in the game.
+There are various categories of work which inevitably lead to discovery and exploration but unfortunately the only way to avoid hitting those categories is to stay in the "known knowns" quadrant and never innovate or learn. Given this, it's critical to challenge those unknowns directly. They represent the greatest amount of risk to a project and should be best understood before proceeding with any other aspect of it. Or rue the day when you need to re-architecture your entire stack because your assumptions bite you very late in the game.
 
 However these challenges always present a high degree of churn, you'll quickly hit walls in your understanding and it's typically best to scrap the work and retry. This is the failing fast model of development. Typically pairs best with some hypothesis based on your outcomes.
 
@@ -175,7 +175,7 @@ Outcome:
 * I want to start a website, with a blog, and subdomains for other projects.
 
 Hypothesis:
-* Docker is a suitable mechanism for deploying, and organising multiple sites on the same machine.
+* Docker is a suitable mechanism for deploying and organising multiple sites.
 
 This immediately places the known parts of the known unknowns to the forefront of the task providing a framework with which to tackle the problem. In this case, I should:
 
@@ -185,9 +185,9 @@ This immediately places the known parts of the known unknowns to the forefront o
   - Load balance multiple instances, all from a single machine, etc
 3. Test and implement various discoveries from this research
 
-I'm telling a bit of a lie here, because I already had a good idea that using a single instance with a reverse proxy would be the cheapest and simplest option for starting out. But I did have to research ways of deploying reverse proxies using docker, and the costs of using serverless deployments behind a load balancer. In the end, the solution with the least headache, and the most discovery was to use the `nginx-proxy` container and a single static host. So once I had tested on a hastily constructed droplet that I could use `nginx-proxy` to automatically create subdomains and that they were reachable I was happy with my experimentation phase and quickly put together a pipeline.
+I'm telling a bit of a lie here, because I already had a good idea that using a single instance with a reverse proxy would be the cheapest and simplest option for starting out. But I did have to research ways of deploying reverse proxies using docker, and the costs of using serverless deployments behind a load balancer. In the end, the solution with the least headache, and the most opportunity for learning was to use the `nginx-proxy` container and a single static host. So once I had tested on a hastily constructed droplet that I could use `nginx-proxy` to automatically create subdomains and that they were reachable I was happy with my experimentation phase and quickly put together a pipeline.
 
-The first thing that I did once I had a plan that was actionable was to create a test environment and prove out my assumptions. Luckily they were correct and it was fairly smooth sailing. If it had been the case that for example, `nginx-proxy` was poorly maintained and it didn't work appropriately, or that I had made assumptions about how various parts of the stack fit together such as nginx wasn't suitable for hosting jekyll sites then at this point I would have scrapped the stack and gone a different route. Likely I would have looked at using Google Cloud Functions, or AWS Lambdas.
+The first thing that I did once I had a plan that was actionable was to create a test environment and prove out my assumptions. Luckily they were correct and it was fairly smooth sailing. If it had been the case that for example, `nginx-proxy` was poorly maintained and it didn't work appropriately, or that I had made assumptions about how various parts of the stack fit together such as nginx not being suitable for hosting jekyll sites then at this point I would have scrapped the stack and gone a different route. Likely I would have looked at using Google Cloud Functions, or AWS Lambdas.
 
 If you look at the [pull request history](https://github.com/Penson122/personal-blog/pulls?q=is%3Apr+is%3Aclosed), you'll see that the first two were to add the demo site that comes with `jekyll new`, a dockerfile and a workflow to publish the container. This made it trivial test ways of deploying the site. All I had to was pull and run the container on a host with docker installed.
 
@@ -195,7 +195,7 @@ Having this single artefact with which to deploy the site meant that I could qui
 
 Even though the site was [initially broken](https://github.com/Penson122/personal-blog/pull/3/files), it suited the purpose of a "hello, world!" app. It was also simple to fixup and update in production.
 
-The alternatives could have been locally bundling the site, pushing it to the sever, rebuilding the container (or replacing the mounted directory). Instead it was `git push`, `docker pull`, `./kill.sh && start.sh`. An obviously much simpler, repeatable, process which less room for error, and frustration. With the ability to roll back to boot.
+The alternatives could have been locally bundling the site, pushing it to the sever, and rebuilding the container. Instead it was `git push`, `docker pull`, `./kill.sh && start.sh`. An obviously much simpler, repeatable, process which less room for error, and frustration. With the ability to roll back to boot.
 
 To summarise: when starting new projects first interrogate any gaps in understanding, then experiment to prove assumptions, and leverage automation to simplify process and accelerate experimentation.
 
