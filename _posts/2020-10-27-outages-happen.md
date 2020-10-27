@@ -143,7 +143,18 @@ $ grep -rnw -e 'CERTIFICATE' /var/lib/docker/volumes
 /var/lib/docker/volumes/c4c50b3dd0779e13b1a9abe254ef280a58740c8698d72cc8a56e4e23d4ca4d69/_data/jackpenson.dev/chain.pem:1:-----BEGIN CERTIFICATE-----
 ```
 
-That's the ticket. `jackpenson.dev/chain.pem` that certainly sounds more like it. If we go have a look in that `_data` directory we find a `jackpenson.dev.crt`, excellent news!
+That's the ticket. `jackpenson.dev/chain.pem` that certainly sounds more like it.
+
+Oh wait, we've got a `jackpenson.dev` directory in `/local/path/certs`. I wonder what's in there:
+
+```
+$ ls /local/path/certs/jackpenson.dev
+account_key.json  account_reg.json
+```
+
+Ahah. It looks like the `chain.pem` is part of the _real_ certificate setup.
+
+If we go have a look in that `_data` directory we find a `jackpenson.dev.crt` too, excellent news!
 
 And if we open that one up:
 ```
@@ -167,6 +178,6 @@ $ kill.sh && start.sh
 
 ## Retro
 
-All in all it took longer to deconstruct the outage and turn it into a post than it took to resolve it. Luckily as this had all been on the same host the docker volumes had stuck around. If these were on ephemeral hosts I would have lost these volumes and i'd have had to wait an entire week to get the site back to https. I suppose at that point I really would have had to hang my head in shame and host the site as http for the time being.
+All in all it took longer to deconstruct the outage and turn it into a post than it took to resolve it. Luckily as this had all been on the same host the docker volumes had stuck around. If these were on ephemeral hosts I would have lost these volumes and I'd have had to wait an entire week to get the site back to https. I suppose at that point I really would have had to hang my head in shame and host the site as http for the time being.
 
 Luckily, in my laziness I hadn't torn down the host yet. I will need to do so soon when I write terraform for the digital ocean environment. Hopefully this will remind me to take backups before I delete it all.
