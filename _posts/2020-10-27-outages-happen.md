@@ -23,7 +23,7 @@ docker run --detach \
       jrcs/letsencrypt-nginx-proxy-companion
 ```
 
-Standard copy-paste without thinking, rushing to get stuff working. It's also the pain of not having any peer-review process. What I'd done is not mount the certs directory to the host system. As I'd been experimenting with creating this site and restarting repeatedly as I was pushing updates to the first post and playing with different themes and jekyll configs I had been requesting new certificates the whole time.
+Standard copy-paste without thinking, rushing to get stuff working. It's also the pain of not having any peer-review process. What I'd done is not mount the certs directory to the host system. As I'd been experimenting with creating this site and restarting repeatedly as I was pushing updates to the [first post](https://jackpenson.dev/2020/10/20/so-you're-making-a-blog.html) and playing with different themes and jekyll configs I had been requesting new certificates the whole time.
 
 I then ran head long into the [let's encrypt rate limiter](https://letsencrypt.org/docs/rate-limits/). So on my final update I was granted with this lovely page:
 
@@ -176,7 +176,7 @@ $ kill.sh && start.sh
 ![Huzzah](/assets/images/huzzah.gif)
 
 
-## Retro
+## Post-mortem
 
 All in all it took longer to deconstruct the outage and turn it into a post than it took to resolve it. Luckily as this had all been on the same host the docker volumes had stuck around. If these were on ephemeral hosts I would have lost these volumes and I'd have had to wait an entire week to get the site back to https. I suppose at that point I really would have had to hang my head in shame and host the site as http for the time being.
 
